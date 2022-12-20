@@ -1,131 +1,226 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<meta name = "viewport" content="width=device-width, initial-scale=1">
-<head><title>Sinumerik Monitoring</title>
-<meta name="keywords" content="Sinumerik online monitoring, Sinumerik 840D remote diagnosis, Sitrain simulator, Step7 scope monitoring, Totally Integrated Automation, MCP Machine Control Panel Simulation, Virtual MCP, Virtual Machine Control Panel">
-<meta name="description" content="Online monitoring and service for Sinumerik 840D Solution Line, Sinamics S120 or Step7 systems">
- <style>
-   * {
-    box-sizing: border-box;
-   }
-/* Logo */
-   .para1 {
-   margin-top: 5px; margin-left: 15px; margin-right: 10px;
-   font-family: Arial; font-size: 14px; line-height: 10px;  text-align: right;
-   color: #004080; }
-   .para2 { 
-   margin-top: 10px; margin-left:  15px; margin-right: 10px;
-   font-family: Arial; font-size: 50px; line-height: 50px; text-align: left;
-   color: #303050; }
-   .para3 {
-   margin-top: -20px; margin-left: 240px; margin-right: 10px;
-   font-family: Arial; font-size: 40px; line-height: 35px; text-align: left;
-   color: #90909F; }
-/* Bara Meniu */
-   ul.menubar {
-    list-style-type: none; margin: 0; padding: 0;
-    overflow: hidden; background-color: #00000F;
-    position: sticky; top: 0;}
-   ul.menubar li {float: left;}
-   ul.menubar li a {
-    display: block; color: #F4F4FF; text-align: left; padding: 14px 16px;
-    text-decoration: none; font-size: 17px;}
-   ul.menubar li a.active {background-color: #004080;}
-   ul.menubar li.right {float: right;}
-   u1.menubar.li.dropdown {float: left; overflow: hidden;}
-   .dropdown .dropbtn {
-    font-size: 17px;
-    border: none;
-    outline: none;
-    color: #F4F4FF;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;}
-   .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #90909F;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;}
-   .dropdown-content a {
-    float: none;
-    color: #F4F4FF;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;}
-   .dropdown:hover .dropdown-content {
-    display: block;}
-   .menubar a:hover, .dropdown:hover .dropbtn .dropdown-content a:hover{
-    background-color: #404040;
-   }
-   @media screen and (max-width:600px){
-    ul.menubar li, ul.menubar li.right {float: none;}
-   }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Sinumerik online monitoring, 
+  Sinumerik 840D remote diagnosis, Sitrain simulator, 
+  Step7 scope monitoring, Totally Integrated Automation, 
+  MCP Machine Control Panel Simulation, Virtual MCP, 
+  Virtual Machine Control Panel">
+<meta name="description" content="Online monitoring and 
+  service for Sinumerik 840D Solution Line, 
+  Sinamics S120 or Step7 systems">
+<head><title>Sinumerik/Sinamics Monitoring</title>
+  <style>
+    * { box-sizing: border-box;}
+    body {font-family: Arial, sans-serif; font-size: 100%;}
+    h1 {font-family: Garamond, serif; font-size: 2.500rem;}
+    h2 {font-family: Garamond, serif; font-size: 1.875rem;}
+    h3 {font-family: Garamond, serif; font-size: 1.300rem;}
+    /* Logo: data/versiune; titlu; subtitlu*/
+    .logo1p {
+      margin-top: 5px; margin-left: 15px; margin-right: 10px;
+      font-family: Arial; font-size: 0.8rem; line-height: 10px;
+      text-align: right; color: #004080; }
+    .logo2p { 
+      margin-top: 10px; margin-left: 15px; margin-right: 10px;
+      font-family: Arial; font-size: 3rem; line-height: 50px;
+      text-align: left; color: #303050; }
+    .logo3p {
+      margin-top: -20px; margin-left: 180px; margin-right: 10px;
+      font-family: Arial; font-size: 2.5rem; line-height: 35px;
+      text-align: left; color: #90909F; }
+    .topnav {
+      /* Fundal */
+      display: flex; flex-direction: row; align-items: center;
+      background-color: #303050;
+      background: linear-gradient(to left, #00000F, #505070);
+      color: #90909F; height: 50px; font-family: Arial;
+      position: sticky; top: 0;  padding: 0;
+    }
+    .menubar {
+      /* Bara meniu orizontal... */
+      display: flex; flex-direction: row; list-style-type: none;
+      margin: 0; padding: 0;}
+    .menubar > li { margin: 0; overflow: hidden;}
+    .menubar li:hover { background:#404040;}
+    .menubar li.active {background-color: #6060A0;}
+    .menubar li a {
+      display: block; color: #F4F4FF; text-align: left;
+      padding: 14px; text-decoration: none; font-size: 1rem;}
+    .menubar li a:hover{ background-color: #404040;}
+    .menu_bcontainer {
+      display: none; height: 100%; width: 60px; cursor: pointer;
+      flex-direction: column; justify-content: center;
+      align-items: center;}
+    .menu_button, .menu_button::before, .menu_button::after {
+      display: block; background-color: #90909F; position: absolute;
+      height: 4px; width: 30px; border-radius: 2px;
+      transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .menu_button::before { content: ''; margin-top: -8px;}
+    .menu_button::after  { content: ''; margin-top:  8px;}
+    #menu_toggle { display: none;}
+    #menu_toggle:checked + .menu_bcontainer .menu_button::before {
+      margin-top: 0px; transform: rotate(45deg);}
+    #menu_toggle:checked + .menu_bcontainer .menu_button {
+      background: rgba(255, 255, 255, 0);}
+    #menu_toggle:checked + .menu_bcontainer .menu_button::after {
+      margin-top: 0px; transform: rotate(-45deg);}
+    .topelement { background: url('images/header.png') center;
+      background-size: cover; padding: 0rem 2rem;
+      display: grid; align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));}
+    .topelement > * {color: white;}
+    .topelement > h1 {font-size: 3rem; padding-bottom: 0.5rem;
+      background-color: rgba(0,0,0,0.5); color: #90909F;}
+    .anyelement {padding: 0.2rem; margin 0.2rem;}
+    .anyelement > ul {
+      list-style-type: none; display: grid; grid-gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      padding: 0.2rem;}
+    .anyelement > ul > li {border: 1px solid #90909F;}
+    .anyelement > ul > li > figure {
+      height: 200px; overflow: hidden; margin:0.1rem;}
+    .anyelement > ul > li > figure > img {width: 100%;}
+    .anyelement > ul > li > figure > figcaption {
+      position: absolute; bottom: 0;
+      background-color: rgba(0,0,0,0.7); width: 100%;}
+    .anyelement > ul > li > figure > figcaption > h3 {
+      color: white; padding: .75rem; font-size: 1.25rem;}
+    .anyelement > ul > li > p {
+      font-size: 1rem; line-height: 1; padding: 0.2rem .2rem;
+      <!--color: #90909F;-->}
+    .anyelement > ul > li > p > a {
+      font-size: 0.8rem; line-height: 1; padding: 0.5rem;
+      background-color: 90909F; text-decoration: none;
+      color: FFFFFF; border-radius: .25rem;
+      text-align: center; display: inline-block;
+    }
+    footer {
+      background-color: #303030; color: white; padding: .75rem;
+      text-align: center; font-size: .75rem;}
+    @media (max-width: 800px) {
+      .menu_bcontainer { display: flex;}
+      .menubar {
+        position: absolute; top: 0; margin-top: 50px; left: 0;
+        flex-direction: column; width: 100%;
+        justify-content: center; align-items: center;}
+      #menu_toggle ~ .menubar li {
+        height: 0; margin: 0; padding: 0; border: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);}
+      #menu_toggle:checked ~ .menubar li {
+        border: 1px solid #30303F; height: 2.5rem;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);}
+      .menubar > li {
+        display: flex; justify-content: left; margin: 0;
+        padding: 0.5rem 0; width: 100%; color: white;
+        background-color: #10102F;
+      }
+    }
   </style>
 </head>
 <!-- START BODY ... -->
 <body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
-<!-- START Header Area ... -->
-<a name="#top"> </a>
-<div class="para1" align="center">v20.05.14; May.2020</div>
-<div class="para2" align="center"><b>Monitor</b></div>
-<div class="para3" align="center"><b>for Step7</b></div>
-<!-- hr color="#004080" size="2" -->
-<!-- END Header Area ... -->
-<!-- START Menu Bar ... -->
-<ul class="menubar">
-  <li><a class="active" href="index.html">Home</a></li>
-  <li><a href="monitor5/index.html">Monitor5</a></li>
-  <li><a href="virtualmcp/index.html">VirtualMCP</a></li>
-  <li><a href="cam410/index.html">Cam410</a></li>
-  <li><a href="cam840/index.html">Cam840</a></li>
-  <li class="right">
-    <a href="index_ro.html">Romana</a>
-  </li>
-</ul>
+  <!-- START Header Area ... -->
+  <a name="#top"> </a>
+  <div class="logo1p" align="center">v22.12.16; Dec.2022</div>
+  <div class="logo2p" align="center"><b>Monitor</b></div>
+  <div class="logo3p" align="center"><b>Sinumerik, Sinamics and Step7</b></div>
+  <!-- END Header Area ... -->
+  <!-- START Menu Bar ... -->
+  <section class="topnav">
+    <input id="menu_toggle" type="checkbox" />
+    <label class='menu_bcontainer' for="menu_toggle">
+      <div class='menu_button'></div>
+    </label>
+    <ul class="menubar">
+      <li class="active"><a href="http://alxcor.github.io">Home</a></li>
+      <li><a href="index_ro.html">Romana</a></li>
+      <li><a href="monitor5/index.html">Monitor5</a></li>
+      <li><a href="virtualmcp/index.html">VirtualMCP</a></li>
+      <li><a href="cam410/index.html">Cam410</a></li>
+      <li><a href="cam840/index.html">MyHMI/3GL</a></li>
+      <li><a href="camxls/index.html">Excel VBA</a></li>
+    </ul>
+  </section>
 <!-- END Menu Bar ... -->
 <!-- START Main Area ... -->
-
+<section class="topelement">
+  <h1>Apps4S7</h1>
+</section>
+<section class="anyelement">
+  <ul>
+    <li>
+      <figure>
+        <img alt="Monitor5" title="Monitor5" src="images/monitor5.png">
+      </figure>
+      <p>
+        <b>'Monitor 5'</b> may be used for diagnosis of Sinumerik 840D, Sinamics or Step7 systems connected via Ethernet.<br><br>
+        <br>
+        No installation is needed, the program is portable and saves all data in .INI files in own folder.<br>
+        <i>Monitor5 is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a>
+        to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
+        Monitor5 is using <a href="https://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">
+        LGPL3 Licence</a>.</i><br><br>
+        <a href="monitor5/index.html">more...</a>
+      </p>
+    </li>
+    <li>
+      <figure>
+        <img alt="Virtual MCP" title="Virtual MCP" src="images/virtualmcp.png">
+      </figure>
+      <p>
+        <b>'VirtualMCP'</b> is a very small emulator of the SINUMERIK machine control panel (MCP)<br><br>
+        <br>
+        No installation is needed, the program is portable and saves all data in .INI files in own folder.<br>
+        <i>VirtualMCP is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a>
+        to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
+        'VirtualMCP' is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">
+        LGPL3 Licence</a>.</i><br><br>
+        <a href="virtualmcp/index.html">more...</a>
+      </p>
+    </li>
+    <li>
+      <figure>
+        <img alt="Cam410" title="Cam410" src="images/cam410.png">
+      </figure>
+      <p>
+        <b>'Cam410'</b> is a package of very small simulators for the Step7/TIA trainings.
+        One simulator is for the Step7 "training conveyor", another one for Safety Intergated "training production unit",
+        etc.<br><br>
+        No installation is needed, each program is portable and saves all data in .INI files in own folder.<br>
+        <i>'Cam410' is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a>
+        to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
+        'Cam410' is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">
+        LGPL3 Licence</a>.</i><br><br>
+        <a href="cam410/index.html">more...</a>
+      </p>
+    </li>
+    <li>
+      <figure>
+        <img alt="Cam840" title="Create MyHMI/3GL" src="images/cam840.png">
+      </figure>
+      <p>
+        <b>Create MyHMI /3GL</b> can be used to create HMI extensions for the SINUMERIK 840D sl and 
+        SINUMERIK ONE or stand-alone user interfaces for SINUMERIK 840D sl, SINUMERIK ONE, and SINUMERIK MC.<br>
+        SINUMERIK Create MyHMI /3GL allows high-level language applications to be developed in the C++ 
+        programming language in conjunction with Qt for SINUMERIK Operate on SINUMERIK PCU 50.5, 
+        SIMATIC IPC427E or IPC477E, and on SINUMERIK NCU 7x0.<br><br>
+        Here are some small code samples used to monitor variables (using a dinamic graph) or to log alarms...<br><br>
+        <a href="cam840/index.html">more...</a>
+      </p>
+    </li>
+    <li>
+      <figure>
+        <img alt="Excel Tools" title="Excel Tools" src="images/camxls.png">
+      </figure>
+      <p>
+        Spare parts evaluation (for Siemens MLFB) using an Excel web-scrapper...<br>
+        Sample file for data conversion, including Step5Time and BCD values...<br><br>
+        <a href="camxls/index.html">more...</a>
+      </p>
+    </li>
+  </ul>
+</section>
 <!-- END Main Area ... -->
-<h1><a href="monitor5/index.html">Monitor 5</a></h1><br>
-
-'Monitor 5' may be used for diagnosis of Sinumerik 840D, Sinamics or Step7 systems connected via Ethernet.<br>
-No installation is needed, the program is portable and saves all data in .INI files in own folder.<br>
-To 'uninstall' simply delete the folder.<br>
-<br>
-Monitor5 is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.
-<br>
-<br>
-Monitor5 is using <a href="https://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a>.
-<hr color="#004080" size="1"> <br>
-<h1><a href="virtualmcp/index.html">Virtual MCP</a></h1><br>
-
-'VirtualMCP' is a very small emulator of the SINUMERIK machine control panel (MCP)<br>
-No installation is needed, the program is portable and saves all data in .INI files in own folder.<br>
-To 'uninstall' simply delete the folder.<br>
-<br>
-VirtualMCP is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.
-<br>
-<br>
-VirtualMCP is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 Licence</a>.
-<hr color="#004080" size="1"> <br>
-<h1><a href="cam410/index.html">Cam410: Tools for training</a></h1><br>
-
-'Cam410' is a series of very small simulators for the Step7/TIA trainings. One simulator is for the Step7 "training conveyor", another one for Safety Intergated "training production unit", etc.<br>
-No installation is needed, the programs are portable and saves all data in .INI files in own folders.<br>
-To 'uninstall' simply delete the folders.<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<hr color="#004080" size="2">
 </body></html>
