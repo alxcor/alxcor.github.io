@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="Sinumerik online monitoring, Sinumerik 840D remote diagnosis, Sitrain simulator, Step7 scope monitoring, Totally Integrated Automation, MCP Machine Control Panel Simulation, Virtual MCP, Virtual Machine Control Panel">
 <meta name="description" content="Online monitoring and service for Sinumerik 840D Solution Line, Sinamics S120 or Step7 systems">
-<head><title>Sinumerik/Sinamics Monitoring</title>
+<head><title>Sinumerik/Sinamics Monitoring cu tema</title>
   <style>
     /* Setari generale: chenar, fonturi, etc. */
     * { box-sizing: border-box;}
@@ -125,6 +125,14 @@
         padding: 0.5rem 0; width: 100%; color: white;
         background-color: #10102F;}
     }
+    .darkmode {
+      @media (prefers-color-scheme: light) {
+        color: #FFFFFF; background-color: #000000;
+      }
+      @media (prefers-color-scheme: dark) {
+        color: #000000; background-color: #FFFFFF;
+      }
+    }
     @media (prefers-color-scheme: light) {
       body {color: #000000; background-color: #FFFFFF;}
     }
@@ -137,7 +145,7 @@
 <body>
   <!-- START Header Area ... -->
   <a name="#top"> </a>
-  <div class="logo1p" align="center">v23.01.28; Ian.2023</div>
+  <div class="logo1p" align="center">v24.01.21; Ian.2024</div>
   <div class="logo2p" align="center"><b>Monitor</b></div>
   <div class="logo3p" align="center"><b>Sinumerik, Sinamics and Step7</b></div>
   <!-- END Header Area ... -->
@@ -148,8 +156,9 @@
       <div class='menu_btn'></div>
     </label>
     <ul class="menu_lst">
-      <li class="active"><a href="http://alxcor.github.io">Home</a></li>
-      <li><a href="index_ro.html">Romana</a></li>
+      <li><a href="http://alxcor.github.io" style="padding: 4px;"><img src="images/ico_home.png" alt="Home" width="35" height="35"></a></li>
+      <li><a href="index_ro.html" style="padding: 4px;"><img src="images/ico_lang.png" alt="Romana" width="35" height="35"></a></li>
+      <li><a style="padding: 4px;"><img src="images/ico_dark.png" alt="Light/Dark" width="35" height="35" onclick="changetodark()"></a></li>
       <li><a href="cam740/index.html">Cam740</a></li>
       <li><a href="virtualmcp/index.html">VirtualMCP</a></li>
       <li><a href="cam410/index.html">Cam410</a></li>
@@ -179,9 +188,11 @@
         <b>'Cam740'</b> may be used for diagnosis of Sinumerik 840D, Sinamics or Step7 systems connected via Ethernet, Profibus, MPI.<br><br>
         <br>
         No installation is needed, the program is portable and saves all data in .INI files in own folder.<br>
-        <i>Cam740 is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 License</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
-        Cam740 is using <a href="https://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html"> LGPL3 License</a>.<br>
-        The project may also use S7ONLINE interface if the DLL file is provided by user and a license is activated.</i><br><br>
+        <i>
+        'Cam740' is using <a href="https://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html"> LGPL3 License</a>.<br>
+        'Cam740' is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 License</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
+        The project may also use ProDave interface if the DLL file is provided by user and a license is activated.
+        </i><br><br>
       </p>
     </li>
     <li>
@@ -193,8 +204,11 @@
         <b>'VirtualMCP'</b> is a very small emulator of the SINUMERIK machine control panel (MCP)<br><br>
         <br>
         No installation is needed, the program is portable and saves all data in .INI files in own folder.<br>
-        <i>VirtualMCP is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 License</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
-        'VirtualMCP' is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html"> LGPL3 License</a>.</i><br><br>
+        <i>
+        'VirtualMCP' is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html"> LGPL3 License</a>.
+        VirtualMCP is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 License</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
+        The project may also use ProDave interface if the DLL file is provided by user and a license is activated.
+        </i><br><br>
       </p>
     </li>
     <li>
@@ -205,8 +219,11 @@
         <a href="cam410/index.html">Go to Cam410...</a><br><br>
         <b>'Cam410'</b> is a package of very small simulators for the Step7/TIA training. One simulator is for the Step7 "training conveyor", another one for Safety Integrated "training production unit", etc.<br><br>
         No installation is needed, each program is portable and saves all data in .INI files in own folder.<br>
-        <i>'Cam410' is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 License</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
-        'Cam410' is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html"> LGPL3 License</a>.</i><br><br>
+        <i>
+        'Cam410' is using <a href="http://www.qt.io">Qt</a> under <a href="http://www.gnu.org/licenses/lgpl-3.0.html"> LGPL3 License</a>.
+        'Cam410' is using Snap7 under <a href="http://www.gnu.org/licenses/lgpl-3.0.html">LGPL3 License</a> to communicate with the Sinumerik/Sinamics/Step7 equipment.<br>
+        The project may also use ProDave interface if the DLL file is provided by user and a license is activated.
+        </i><br><br>
       </p>
     </li>
     <li>
@@ -236,4 +253,10 @@
 <section class="footer">
   alxcor@yahoo.com
 </section>
+<script>
+  function changetodark() {
+    var element = document.body;
+    element.classList.toggle("darkmode");
+  }
+</script>
 </body></html>

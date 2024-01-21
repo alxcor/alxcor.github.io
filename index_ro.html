@@ -125,6 +125,14 @@
         padding: 0.5rem 0; width: 100%; color: white;
         background-color: #10102F;}
     }
+    .darkmode {
+      @media (prefers-color-scheme: light) {
+        color: #FFFFFF; background-color: #000000;
+      }
+      @media (prefers-color-scheme: dark) {
+        color: #000000; background-color: #FFFFFF;
+      }
+    }
     @media (prefers-color-scheme: light) {
       body {color: #000000; background-color: #FFFFFF;}
     }
@@ -137,7 +145,7 @@
 <body>
   <!-- START Header Area ... -->
   <a name="#top"> </a>
-  <div class="logo1p" align="center">v23.01.28; Ian.2023</div>
+  <div class="logo1p" align="center">v24.01.21; Ian.2024</div>
   <div class="logo2p" align="center"><b>Monitor</b></div>
   <div class="logo3p" align="center"><b>Sinumerik, Sinamics si Step7</b></div>
   <!-- END Header Area ... -->
@@ -148,8 +156,9 @@
       <div class='menu_btn'></div>
     </label>
     <ul class="menu_lst">
-      <li class="active"><a href="http://alxcor.github.io/index_ro.html">Acasa</a></li>
-      <li><a href="index.html">English</a></li>
+      <li><a href="http://alxcor.github.io/index_ro.html" style="padding: 4px;"><img src="images/ico_home.png" alt="Acasa" width="35" height="35"></a></li>
+      <li><a href="index.html" style="padding: 4px;"><img src="images/ico_lang.png" alt="English" width="35" height="35"></a></li>
+      <li><a style="padding: 4px;"><img src="images/ico_dark.png" alt="Fundal" width="35" height="35" onclick="changetodark()"></a></li>
       <li><a href="cam740/index_ro.html">Cam740</a></li>
       <li><a href="virtualmcp/index_ro.html">VirtualMCP</a></li>
       <li><a href="cam410/index_ro.html">Cam410</a></li>
@@ -179,8 +188,11 @@
         <b>'Cam740'</b> poate fi utilizat pentru diagnoza sistemelor Sinumerik 840D, Sinamics sau Step7 conectabile prin Ethernet, Profibus, MPI.<br><br>
         <br>
         Nu este necesara instalarea programului, acesta este portabil iar toate datele si setarile sunt salvate in fisiere .INI in directorul propriu.<br>
-        <i>Cam740 utilizeaza Snap7 sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a> pentru a stabili comunicatia cu echipamentul Sinumerik/Sinamics/Step7.<br>
-        Cam740 utilizeaza <a href="https://www.qt.io">Qt</a> sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a>.</i><br><br>
+        <i>
+        'Cam740' utilizeaza <a href="https://www.qt.io">Qt</a> sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a>.<br><br>
+        'Cam740' utilizeaza Snap7 sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a> pentru a stabili comunicatia cu echipamentul Sinumerik/Sinamics/Step7.<br>
+        Proiectul poate utiliza si interfata Prodave daca fisierul DLL este copiat in directorul de lucru si licenta acestuia este activata.
+        </i><br><br>
       </p>
     </li>
     <li>
@@ -192,8 +204,11 @@
         <b>'VirtualMCP'</b>este un mic emulator pentru panourile de control masina MCP din sistemele SINUMERIK.<br><br>
         <br>
         Nu este necesara instalarea programului, acesta este portabil iar toate datele si setarile sunt salvate in fisiere .INI in directorul propriu.<br>
-        <i>VirtualMCP utilizeaza Snap7 sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a> pentru a stabili comunicatia cu echipamentul Sinumerik/Sinamics/Step7.<br>
-        VirtualMCP utilizeaza <a href="https://www.qt.io">Qt</a> sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a>.</i><br><br>
+        <i>
+        'VirtualMCP' utilizeaza <a href="https://www.qt.io">Qt</a> sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a>.
+        'VirtualMCP' utilizeaza Snap7 sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a> pentru a stabili comunicatia cu echipamentul Sinumerik/Sinamics/Step7.<br>
+        Proiectul poate utiliza si interfata Prodave daca fisierul DLL este copiat in directorul de lucru si licenta acestuia este activata.
+        </i><br><br>
       </p>
     </li>
     <li>
@@ -204,8 +219,11 @@
         <a href="cam410/index_ro.html">Cam410...</a><br><br>
         <b>'Cam410'</b> este o serie de mici simulatoare pentru cursurile de scolarizare Step7/TIA. Simulator al benzii transportoare din standurile de scolarizare Step7/TIA, a liniei de productie pentru cursurile Safety Integrated, etc.<br><br>
         Nu este necesara instalarea programelor, acestea sunt portabile iar toate datele si setarile sunt salvate in fisiere .INI in directorul propriu.<br>
-        <i>'Cam410' utilizeaza Snap7 sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a> pentru a stabili comunicatia cu echipamentul Sinumerik/Sinamics/Step7.<br>
-        'Cam410' utilizeaza <a href="https://www.qt.io">Qt</a> sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a>.</i><br><br>
+        <i>
+        'Cam410' utilizeaza <a href="https://www.qt.io">Qt</a> sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a>.
+        'Cam410' utilizeaza Snap7 sub <a href="http://www.gnu.org/licenses/lgpl-3.0.html">Licenta LGPL3</a> pentru a stabili comunicatia cu echipamentul Sinumerik/Sinamics/Step7.<br>
+        Proiectul poate utiliza si interfata Prodave daca fisierul DLL este copiat in directorul de lucru si licenta acestuia este activata.
+        </i><br><br>
       </p>
     </li>
     <li>
@@ -235,4 +253,10 @@
 <section class="footer">
   alxcor@yahoo.com
 </section>
+<script>
+  function changetodark() {
+    var element = document.body;
+    element.classList.toggle("darkmode");
+  }
+</script>
 </body></html>
